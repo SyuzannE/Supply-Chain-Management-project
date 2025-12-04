@@ -41,20 +41,6 @@ Uvicorn dev server with live reload
 
 Modular code structure
 
-📁 Project Structure
-supply/
-│── backend/            # FastAPI app, ML models, routing logic
-│   ├── app.py
-│   ├── models/
-│   └── utils/
-│
-│── frontend/           # React + Vite UI
-│   ├── src/
-│   ├── public/
-│
-│── assets/             # Images, icons, datasets
-│── README.md
-│── LICENSE
 
 🛠️ Installation & Setup
 1️⃣ Clone the repository
@@ -103,9 +89,9 @@ Optimization algorithms for routing
 
 Models are loaded dynamically and reusable through a PredictionService class.
 
-📸 Screenshots (Optional)
+📸 Screenshots 
 
-You can place UI screenshots inside /assets and link them here:
+
 
 ![Dashboard Preview](assets/dashboard.png)
 
