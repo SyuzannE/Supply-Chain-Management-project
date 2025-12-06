@@ -4,7 +4,7 @@ In the digital age, where supply chains are the backbone of global commerce, the
 
 With an interactive interface built using **React, TypeScript, and Tailwind CSS**, and multiple machine learning models serving as the brains behind the operation, this project bridges the gap between **human decision-making and AI-driven insights**. 
 
-# Supply Chain Management System 🚚
+# Supply Chain Management app 🚚
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
@@ -104,12 +104,13 @@ VITE_API_URL=http://localhost:5000
 Backend:
 ```bash
 cd backend
-npm run dev
+uvicorn app:app --reload
 ```
 
 Frontend:
 ```bash
 cd frontend
+npm install
 npm run dev
 ```
 
@@ -175,13 +176,11 @@ Run tests:
 ```bash
 # Frontend tests
 cd frontend
-npm install
-npm run dev
+npm test
 
 # Backend tests
 cd backend
-uvicorn app:app --reload
-
+npm test
 ```
 
 ## 📈 Performance
