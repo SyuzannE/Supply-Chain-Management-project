@@ -6,6 +6,14 @@ With an interactive interface built using **React, TypeScript, and Tailwind CSS*
 
 An intelligent, modern dashboard designed to optimize supply chain operations through smart routing, demand forecasting, real-time monitoring, and data-driven decision making.
 
+# **Supply Chain Optimization Dashboard**
+
+In the digital age, where supply chains are the backbone of global commerce, the ability to **predict, optimize, and react** in real time has become a competitive superpower. This project is a modern, AI-powered command center designed to tackle the complex challenges of supply chain management with intelligence and style.
+
+With an interactive interface built using **React, TypeScript, and Tailwind CSS**, and multiple machine learning models serving as the brains behind the operation, this project bridges the gap between **human decision-making and AI-driven insights**. 
+
+An intelligent, modern dashboard designed to optimize supply chain operations through smart routing, demand forecasting, real-time monitoring, and data-driven decision making.
+
 This project includes a React + Vite frontend and a FastAPI backend, along with machine-learning support for forecasting and optimization.
 
 🚀 Features
@@ -120,3 +128,4 @@ Submit a PR
 
 ## **📜 License**
 This project is licensed under the Apache License.
+
