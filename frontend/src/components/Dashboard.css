@@ -24,8 +24,8 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
   padding: 1.5rem;
   border-radius: 12px;
   display: flex;
@@ -43,17 +43,20 @@
 .stat-icon {
   font-size: 2.5rem;
   opacity: 0.9;
+  color: white !important;
 }
 
 .stat-content h3 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
+  color: white !important;
 }
 
 .stat-content p {
   font-size: 0.875rem;
   opacity: 0.9;
+  color: white !important;
 }
 
 /* ===================================

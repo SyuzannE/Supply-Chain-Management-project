@@ -2,6 +2,7 @@
  * API Service Layer
  * Integrates: Computer Networks - RESTful API communication
  * Fixed: Handles 422 errors, undefined responses, safe JSON parsing, and validates all data structures
+ * NEW: CSV Database methods added
  */
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -328,6 +329,127 @@ class APIService {
       };
     } catch (error) {
       throw new Error(`Failed to reload models: ${error.message}`);
+    }
+  }
+
+  // ==================== 🆕 CSV DATABASE METHODS ====================
+
+  // Suppliers
+  async getSuppliers(limit = 100) {
+    try {
+      const result = await this.request(`/api/v1/suppliers?limit=${limit}`);
+      return {
+        suppliers: Array.isArray(result.suppliers) ? result.suppliers : [],
+        count: result.count ?? 0,
+        ...result
+      };
+    } catch (error) {
+      throw new Error(`Failed to get suppliers: ${error.message}`);
+    }
+  }
+
+  async getSupplier(supplierId) {
+    try {
+      return await this.request(`/api/v1/suppliers/${supplierId}`);
+    } catch (error) {
+      throw new Error(`Failed to get supplier: ${error.message}`);
+    }
+  }
+
+  async createSupplier(supplierData) {
+    try {
+      return await this.request('/api/v1/suppliers', {
+        method: 'POST',
+        body: JSON.stringify(supplierData),
+      });
+    } catch (error) {
+      throw new Error(`Failed to create supplier: ${error.message}`);
+    }
+  }
+
+  async deleteSupplier(supplierId) {
+    try {
+      return await this.request(`/api/v1/suppliers/${supplierId}`, {
+        method: 'DELETE',
+      });
+    } catch (error) {
+      throw new Error(`Failed to delete supplier: ${error.message}`);
+    }
+  }
+
+  async getSupplierPerformance() {
+    try {
+      const result = await this.request('/api/v1/suppliers/performance/ranking');
+      return {
+        suppliers: Array.isArray(result.suppliers) ? result.suppliers : [],
+        count: result.count ?? 0,
+        ...result
+      };
+    } catch (error) {
+      throw new Error(`Failed to get supplier performance: ${error.message}`);
+    }
+  }
+
+  // Shipments
+  async getShipments(limit = 100) {
+    try {
+      const result = await this.request(`/api/v1/shipments?limit=${limit}`);
+      return {
+        shipments: Array.isArray(result.shipments) ? result.shipments : [],
+        count: result.count ?? 0,
+        ...result
+      };
+    } catch (error) {
+      throw new Error(`Failed to get shipments: ${error.message}`);
+    }
+  }
+
+  // Inventory
+  async getInventory(limit = 100) {
+    try {
+      const result = await this.request(`/api/v1/inventory?limit=${limit}`);
+      return {
+        inventory: Array.isArray(result.inventory) ? result.inventory : [],
+        count: result.count ?? 0,
+        ...result
+      };
+    } catch (error) {
+      throw new Error(`Failed to get inventory: ${error.message}`);
+    }
+  }
+
+  // Predictions History
+  async getPredictionHistory(limit = 100, type = null) {
+    try {
+      const url = type 
+        ? `/api/v1/predictions/history?limit=${limit}&prediction_type=${type}`
+        : `/api/v1/predictions/history?limit=${limit}`;
+      
+      const result = await this.request(url);
+      return {
+        predictions: Array.isArray(result.predictions) ? result.predictions : [],
+        count: result.count ?? 0,
+        ...result
+      };
+    } catch (error) {
+      throw new Error(`Failed to get prediction history: ${error.message}`);
+    }
+  }
+
+  // Statistics
+  async getStatistics() {
+    try {
+      const result = await this.request('/api/v1/statistics');
+      return {
+        total_suppliers: result.total_suppliers ?? 0,
+        total_shipments: result.total_shipments ?? 0,
+        total_inventory_items: result.total_inventory_items ?? 0,
+        total_predictions: result.total_predictions ?? 0,
+        total_routes: result.total_routes ?? 0,
+        ...result
+      };
+    } catch (error) {
+      throw new Error(`Failed to get statistics: ${error.message}`);
     }
   }
 }

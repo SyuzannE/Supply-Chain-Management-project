@@ -5,6 +5,7 @@ import InventoryOptimizer from './components/InventoryOptimizer';
 import ShipmentPredictor from './components/ShipmentPredictor';
 import VehicleRouter from './components/VehicleRouter';
 import BatchProcessor from './components/BatchProcessor';
+import DataViewer from './components/DataViewer'; // 🆕 Import DataViewer
 import api from './services/api';
 import './App.css';
 import React from 'react';
@@ -71,6 +72,7 @@ function App() {
     { id: 'shipment', label: '🚚 Shipment Predictor', component: ShipmentPredictor },
     { id: 'routing', label: '🗺️ Vehicle Routing', component: VehicleRouter },
     { id: 'batch', label: '⚡ Batch Processing', component: BatchProcessor },
+    { id: 'database', label: '💾 Database', component: DataViewer }, // 🆕 Add Database tab
   ];
 
   const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component || Dashboard;
@@ -89,7 +91,7 @@ function App() {
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
-          <h1>🔗 Supply Chain Optimization System</h1>
+          <h1>🔗 Supply Chain Optimization Application</h1>
           <div className="api-status">
             <span className={`status-indicator ${apiStatus.status}`}></span>
             <span>{apiStatus.status === 'online' ? 'Connected' : 'Offline'}</span>
@@ -134,7 +136,7 @@ function App() {
 
       {/* Footer */}
       <footer className="app-footer">
-        <p>Supply Chain Optimization v2.0 | Integrates: AI, Graph Theory, Statistics, Parallel Programming</p>
+        <p>Supply Chain Optimization v2.0 | Integrates: AI, Graph Theory, Statistics, Parallel Programming, CSV Database</p>
       </footer>
     </div>
   );

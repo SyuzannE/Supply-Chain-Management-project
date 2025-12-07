@@ -29,17 +29,83 @@
 }
 
 /* ===================================
-   LOCATION INPUT
+   INPUT SECTION
    =================================== */
 
-.location-input {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr auto;
+.input-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+}
+
+.input-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.input-section h4 {
+  font-size: 1.125rem;
+  margin: 1.5rem 0 1rem 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
+}
+
+/* ===================================
+   FORM GROUPS
+   =================================== */
+
+.form-group {
   margin-bottom: 1.5rem;
 }
 
-.location-input input {
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.algorithm-select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.algorithm-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ===================================
+   DEPOT SECTION
+   =================================== */
+
+.depot-section {
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.depot-inputs {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.depot-inputs input {
   padding: 0.75rem;
   border: 2px solid var(--border-color);
   border-radius: 8px;
@@ -47,14 +113,46 @@
   transition: all 0.3s ease;
 }
 
-.location-input input:focus {
+.depot-inputs input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ===================================
+   CUSTOMER SECTION
+   =================================== */
+
+.customer-section {
+  background: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.customer-inputs {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.customer-inputs input {
+  padding: 0.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.customer-inputs input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .btn-add {
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   background: var(--success-color);
   color: white;
   border: none;
@@ -72,15 +170,25 @@
 }
 
 /* ===================================
-   LOCATIONS LIST
+   CUSTOMERS LIST
    =================================== */
 
-.locations-list {
-  max-height: 400px;
-  overflow-y: auto;
+.customers-list {
   margin-bottom: 1.5rem;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.locations-list {
+  max-height: 300px;
+  overflow-y: auto;
   padding: 0.5rem;
-  background: white;
+  background: var(--light-bg);
   border-radius: 8px;
 }
 
@@ -89,7 +197,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  background: var(--light-bg);
+  background: white;
   border: 2px solid var(--border-color);
   border-radius: 8px;
   margin-bottom: 0.75rem;
@@ -109,8 +217,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background: var(--primary-color);
   color: white;
   border-radius: 50%;
@@ -127,6 +235,7 @@
   display: block;
   color: var(--text-primary);
   margin-bottom: 0.25rem;
+  font-size: 0.95rem;
 }
 
 .location-info small {
@@ -150,6 +259,25 @@
 }
 
 /* ===================================
+   RESULTS SECTION
+   =================================== */
+
+.results-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid var(--border-color);
+}
+
+.result-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* ===================================
    ROUTE SUMMARY
    =================================== */
 
@@ -169,11 +297,25 @@
   color: white;
   border-radius: 12px;
   box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
 .summary-icon {
   font-size: 2rem;
   opacity: 0.9;
+  background: rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .summary-content h4 {
@@ -188,26 +330,71 @@
 }
 
 /* ===================================
-   ROUTE VISUALIZATION
+   ROUTES CONTAINER
    =================================== */
 
-.route-visualization {
+.routes-container {
   margin-bottom: 2rem;
 }
 
-.route-visualization h4 {
-  font-size: 1.125rem;
+.routes-container > h4 {
+  font-size: 1.25rem;
   margin-bottom: 1rem;
   color: var(--text-primary);
 }
+
+.route-card {
+  background: var(--light-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.route-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+}
+
+.route-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.route-header h5 {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.route-stats {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.stat-badge {
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ===================================
+   ROUTE PATH
+   =================================== */
 
 .route-path {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1rem;
-  background: var(--light-bg);
-  border-radius: 8px;
 }
 
 .route-stop {
@@ -257,56 +444,89 @@
 }
 
 .route-arrow {
+  text-align: center;
   font-size: 1.5rem;
   color: var(--primary-color);
   font-weight: 700;
+  padding: 0.25rem 0;
 }
 
 /* ===================================
-   SEGMENT DETAILS
+   ALGORITHM INFO
    =================================== */
 
-.segment-details {
-  padding: 1rem;
+.algorithm-info {
   background: var(--light-bg);
+  padding: 1.5rem;
   border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
 }
 
-.segment-details h4 {
-  font-size: 1.125rem;
-  margin-bottom: 1rem;
+.algorithm-info h4 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
   color: var(--text-primary);
 }
 
-.segments-list {
+.algorithm-info p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.algorithm-info strong {
+  color: var(--primary-color);
+}
+
+/* ===================================
+   LOADING & ERROR STATES
+   =================================== */
+
+.loading-state {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.segment-item {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.75rem;
-  background: white;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
 }
 
-.segment-item:hover {
-  box-shadow: var(--shadow-sm);
+.loading-state p {
+  color: var(--text-secondary);
+  font-size: 1rem;
 }
 
-.segment-route {
-  color: var(--text-primary);
-  font-size: 0.875rem;
+.error-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #fee;
+  border: 2px solid var(--danger-color);
+  border-radius: 12px;
 }
 
-.segment-distance {
-  color: var(--primary-color);
-  font-weight: 700;
-  font-size: 0.875rem;
+.error-state h3 {
+  color: var(--danger-color);
+  margin-bottom: 1rem;
+}
+
+.error-state p {
+  color: var(--text-secondary);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 1rem;
 }
 
 /* ===================================
@@ -324,8 +544,18 @@
 }
 
 @media (max-width: 768px) {
-  .location-input {
+  .depot-inputs {
     grid-template-columns: 1fr;
+  }
+
+  .customer-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .route-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
 
   .route-stop {

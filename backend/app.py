@@ -1,9 +1,10 @@
 """
-Enhanced FastAPI Application
+Enhanced FastAPI Application with CSV Database Support
 Integrates:
 - Computer Networks: RESTful API design
 - Software Engineering: Layered architecture
 - All optimization services
+- CSV Database persistence
 """
 
 from fastapi import FastAPI, HTTPException, Depends
@@ -20,11 +21,14 @@ from src.core.logger import get_logger
 from src.core.config import settings
 from src.core.exceptions import SupplyChainException
 
+# Import CSV database
+from csv_database import db
+
 logger = get_logger(__name__)
 
 app = FastAPI(
     title="Supply Chain Optimization API",
-    description="Advanced supply chain optimization with ML and graph algorithms",
+    description="Advanced supply chain optimization with ML, graph algorithms, and CSV database",
     version="2.0.0"
 )
 
@@ -53,6 +57,15 @@ class SupplierInput(BaseModel):
                 "past_orders": 100
             }
         }
+
+
+class SupplierData(BaseModel):
+    supplier_id: Optional[str] = None
+    name: str
+    lead_time: float
+    cost: float
+    past_orders: int
+    reliability_score: Optional[float] = None
 
 
 class ShipmentInput(BaseModel):
@@ -90,8 +103,9 @@ async def startup_event():
 
     try:
         prediction_service = get_prediction_service()
-        logger.info("Prediction service initialized")   # FIXED — ASCII ONLY
+        logger.info("Prediction service initialized")
 
+        logger.info("CSV Database ready")
         logger.info("=" * 60)
         logger.info("API READY")
         logger.info(f"Environment: {settings.app.get('environment', 'development')}")
@@ -113,18 +127,24 @@ async def shutdown_event():
 async def root():
     prediction_service = get_prediction_service()
     model_info = prediction_service.get_model_info()
+    stats = db.get_statistics()
 
     return {
         "status": "online",
-        "message": "Supply Chain Optimization API v2.0",
+        "message": "Supply Chain Optimization API v2.0 with CSV Database",
         "environment": settings.app.get("environment"),
         "models_loaded": model_info.get("loaded_models") 
-                          or model_info.get("loaded_SContinuemodels", []),   # FIXED
+                          or model_info.get("loaded_models", []),
+        "database": {
+            "type": "CSV",
+            "statistics": stats
+        },
         "features": {
             "predictions": True,
             "inventory_optimization": True,
             "vehicle_routing": True,
-            "parallel_processing": True
+            "parallel_processing": True,
+            "csv_persistence": True
         }
     }
 
@@ -132,26 +152,40 @@ async def root():
 @app.get("/health", tags=["Health"])
 async def health_check():
     prediction_service = get_prediction_service()
+    stats = db.get_statistics()
 
     return {
-    "status": "healthy",
-    "models": prediction_service.get_model_info(),
-    "config": {
-        "parallel_workers": settings.optimization.parallel.get('max_workers', 4),
-        "vehicle_capacity": settings.optimization.routing.get('vehicle_capacity', 1000)
+        "status": "healthy",
+        "models": prediction_service.get_model_info(),
+        "database": stats,
+        "config": {
+            "parallel_workers": settings.optimization.parallel.get('max_workers', 4),
+            "vehicle_capacity": settings.optimization.routing.get('vehicle_capacity', 1000)
+        }
     }
-}
+
 # ==================== PREDICTIONS ====================
 
 @app.post("/api/v1/predict/supplier", tags=["Predictions"])
 async def predict_supplier_reliability(data: SupplierInput):
     try:
         prediction_service = get_prediction_service()
-        return prediction_service.predict_supplier_reliability(
+        result = prediction_service.predict_supplier_reliability(
             lead_time=data.lead_time,
             cost=data.cost,
             past_orders=data.past_orders
         )
+        
+        # Log prediction to CSV database
+        db.log_prediction(
+            prediction_type="supplier",
+            input_data=data.dict(),
+            result=result,
+            model_used=result.get("model", "RandomForest")
+        )
+        
+        return result
+        
     except SupplyChainException as e:
         raise HTTPException(status_code=400, detail=e.to_dict())
     except Exception as e:
@@ -163,7 +197,18 @@ async def predict_supplier_reliability(data: SupplierInput):
 async def forecast_inventory(steps: int = 5, confidence_level: float = 0.95):
     try:
         prediction_service = get_prediction_service()
-        return prediction_service.forecast_inventory(steps, confidence_level)
+        result = prediction_service.forecast_inventory(steps, confidence_level)
+        
+        # Log forecast to CSV database
+        db.log_prediction(
+            prediction_type="inventory_forecast",
+            input_data={"steps": steps, "confidence_level": confidence_level},
+            result=result,
+            model_used="ARIMA"
+        )
+        
+        return result
+        
     except Exception as e:
         logger.error(f"Forecast error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -173,11 +218,30 @@ async def forecast_inventory(steps: int = 5, confidence_level: float = 0.95):
 async def predict_shipment_delay(data: ShipmentInput):
     try:
         prediction_service = get_prediction_service()
-        return prediction_service.predict_shipment_delay(
+        result = prediction_service.predict_shipment_delay(
             delivery_time=data.delivery_time,
             quantity=data.quantity,
             delay_time=data.delay_time
         )
+        
+        # Log prediction to CSV database
+        db.log_prediction(
+            prediction_type="shipment",
+            input_data=data.dict(),
+            result=result,
+            model_used=result.get("model", "LogisticRegression")
+        )
+        
+        # Save shipment record to CSV
+        db.save_shipment({
+            "delivery_time": data.delivery_time,
+            "quantity": data.quantity,
+            "delay_time": data.delay_time,
+            "status": result.get("status", "Unknown")
+        })
+        
+        return result
+        
     except Exception as e:
         logger.error(f"Prediction error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -195,7 +259,7 @@ async def optimize_inventory(data: InventoryOptimizationInput):
             lead_time_days=data.lead_time_days
         )
 
-        return {
+        result = {
             "economic_order_quantity": policy.economic_order_quantity,
             "reorder_point": policy.reorder_point,
             "safety_stock": policy.safety_stock,
@@ -204,6 +268,16 @@ async def optimize_inventory(data: InventoryOptimizationInput):
             "service_level": policy.service_level,
             "number_of_orders": policy.number_of_orders
         }
+        
+        # Log optimization to CSV database
+        db.log_prediction(
+            prediction_type="inventory",
+            input_data=data.dict(),
+            result=result,
+            model_used="EOQ_Model"
+        )
+
+        return result
 
     except Exception as e:
         logger.error(f"Inventory optimization error: {e}")
@@ -231,11 +305,25 @@ async def optimize_vehicle_routes(data: RoutingInput):
             for c in data.customers
         ]
 
-        return optimizer.optimize_routes(
+        result = optimizer.optimize_routes(
             depot=depot_dict,
             customers=customers,
             algorithm=data.algorithm
         )
+        
+        # Log routing optimization to CSV
+        db.log_prediction(
+            prediction_type="routing",
+            input_data={
+                "depot": depot_dict,
+                "customers": customers,
+                "algorithm": data.algorithm
+            },
+            result=result,
+            model_used=f"VRP_{data.algorithm}"
+        )
+
+        return result
 
     except Exception as e:
         logger.error(f"Routing optimization error: {e}")
@@ -259,6 +347,14 @@ async def batch_evaluate_suppliers(suppliers: List[SupplierInput]):
             ),
             supplier_dicts
         )
+        
+        # Log batch prediction
+        db.log_prediction(
+            prediction_type="batch_supplier",
+            input_data={"suppliers": supplier_dicts},
+            result={"results": results, "total": len(suppliers)},
+            model_used="RandomForest_Batch"
+        )
 
         return {
             "total_suppliers": len(suppliers),
@@ -267,6 +363,124 @@ async def batch_evaluate_suppliers(suppliers: List[SupplierInput]):
 
     except Exception as e:
         logger.error(f"Batch evaluation error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ==================== CSV DATABASE ENDPOINTS ====================
+
+@app.post("/api/v1/suppliers", tags=["Database"])
+async def create_supplier(supplier: SupplierData):
+    """Create or update supplier in CSV database"""
+    try:
+        success = db.save_supplier(supplier.dict())
+        if success:
+            return {"message": "Supplier saved successfully", "supplier": supplier}
+        else:
+            raise HTTPException(status_code=500, detail="Failed to save supplier")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/suppliers", tags=["Database"])
+async def get_suppliers(limit: int = 100):
+    """Get all suppliers from CSV database"""
+    try:
+        suppliers = db.get_suppliers(limit=limit)
+        return {
+            "suppliers": suppliers,
+            "count": len(suppliers)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/suppliers/{supplier_id}", tags=["Database"])
+async def get_supplier(supplier_id: str):
+    """Get single supplier by ID"""
+    try:
+        supplier = db.get_supplier(supplier_id)
+        if supplier:
+            return supplier
+        else:
+            raise HTTPException(status_code=404, detail="Supplier not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.delete("/api/v1/suppliers/{supplier_id}", tags=["Database"])
+async def delete_supplier(supplier_id: str):
+    """Delete supplier from CSV database"""
+    try:
+        success = db.delete_supplier(supplier_id)
+        if success:
+            return {"message": "Supplier deleted successfully"}
+        else:
+            raise HTTPException(status_code=404, detail="Supplier not found")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/shipments", tags=["Database"])
+async def get_shipments(limit: int = 100):
+    """Get all shipments from CSV database"""
+    try:
+        shipments = db.get_shipments(limit=limit)
+        return {
+            "shipments": shipments,
+            "count": len(shipments)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/inventory", tags=["Database"])
+async def get_inventory(limit: int = 100):
+    """Get all inventory items from CSV database"""
+    try:
+        inventory = db.get_inventory(limit=limit)
+        return {
+            "inventory": inventory,
+            "count": len(inventory)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/predictions/history", tags=["Database"])
+async def get_prediction_history(
+    limit: int = 100, 
+    prediction_type: Optional[str] = None
+):
+    """Get prediction history from CSV database"""
+    try:
+        predictions = db.get_predictions(limit=limit, prediction_type=prediction_type)
+        return {
+            "predictions": predictions,
+            "count": len(predictions)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/statistics", tags=["Database"])
+async def get_statistics():
+    """Get overall system statistics"""
+    try:
+        stats = db.get_statistics()
+        return stats
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/suppliers/performance/ranking", tags=["Database"])
+async def get_supplier_performance():
+    """Get supplier performance ranking"""
+    try:
+        performance = db.get_supplier_performance()
+        return {
+            "suppliers": performance,
+            "count": len(performance)
+        }
+    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 # ==================== MODEL MANAGEMENT ====================
@@ -290,7 +504,7 @@ async def reload_models():
 
 if __name__ == "__main__":
     uvicorn.run(
-        "app_enhanced:app",
+        "app:app",
         host=settings.server.host,
         port=settings.server.port,
         reload=settings.server.reload,

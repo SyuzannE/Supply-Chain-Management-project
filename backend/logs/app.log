@@ -482,3 +482,209 @@
 2025-12-05 15:51:51,715 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
 2025-12-05 15:51:51,724 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
 2025-12-05 15:51:51,725 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 4 items in 0.11s (37.5 items/s)
+2025-12-06 23:43:11,520 - app - [32mINFO[0m - ============================================================
+2025-12-06 23:43:11,520 - app - [32mINFO[0m - SUPPLY CHAIN OPTIMIZATION API STARTING
+2025-12-06 23:43:11,520 - app - [32mINFO[0m - ============================================================
+2025-12-06 23:43:11,520 - src.services.prediction_service - [32mINFO[0m - Loading all ML models...
+2025-12-06 23:43:15,331 - src.services.prediction_service - [32mINFO[0m -  Loaded supplier model (RandomForestClassifier)
+2025-12-06 23:43:17,511 - src.services.prediction_service - [32mINFO[0m -  Loaded inventory model (ARIMA)
+2025-12-06 23:43:17,532 - src.services.prediction_service - [32mINFO[0m -  Loaded shipment model (LogisticRegression)
+2025-12-06 23:43:17,532 - src.services.prediction_service - [32mINFO[0m - Loaded 3 models successfully
+2025-12-06 23:43:17,532 - app - [32mINFO[0m - Prediction service initialized
+2025-12-06 23:43:17,532 - app - [32mINFO[0m - ============================================================
+2025-12-06 23:43:17,532 - app - [32mINFO[0m - API READY
+2025-12-06 23:43:17,532 - app - [32mINFO[0m - Environment: development
+2025-12-06 23:43:17,532 - app - [32mINFO[0m - Version: 2.0.0
+2025-12-06 23:43:17,532 - app - [32mINFO[0m - ============================================================
+2025-12-06 23:58:34,827 - app - [32mINFO[0m - API shutting down...
+2025-12-06 23:58:46,453 - app - [32mINFO[0m - ============================================================
+2025-12-06 23:58:46,453 - app - [32mINFO[0m - SUPPLY CHAIN OPTIMIZATION API STARTING
+2025-12-06 23:58:46,453 - app - [32mINFO[0m - ============================================================
+2025-12-06 23:58:46,453 - src.services.prediction_service - [32mINFO[0m - Loading all ML models...
+2025-12-06 23:58:48,466 - src.services.prediction_service - [32mINFO[0m -  Loaded supplier model (RandomForestClassifier)
+2025-12-06 23:58:49,723 - src.services.prediction_service - [32mINFO[0m -  Loaded inventory model (ARIMA)
+2025-12-06 23:58:49,726 - src.services.prediction_service - [32mINFO[0m -  Loaded shipment model (LogisticRegression)
+2025-12-06 23:58:49,726 - src.services.prediction_service - [32mINFO[0m - Loaded 3 models successfully
+2025-12-06 23:58:49,726 - app - [32mINFO[0m - Prediction service initialized
+2025-12-06 23:58:49,726 - app - [32mINFO[0m - ============================================================
+2025-12-06 23:58:49,727 - app - [32mINFO[0m - API READY
+2025-12-06 23:58:49,727 - app - [32mINFO[0m - Environment: development
+2025-12-06 23:58:49,727 - app - [32mINFO[0m - Version: 2.0.0
+2025-12-06 23:58:49,727 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:16:23,578 - app - [32mINFO[0m - API shutting down...
+2025-12-07 00:23:24,046 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:23:24,048 - app - [32mINFO[0m - SUPPLY CHAIN OPTIMIZATION API STARTING
+2025-12-07 00:23:24,048 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:23:24,048 - src.services.prediction_service - [32mINFO[0m - Loading all ML models...
+2025-12-07 00:23:24,569 - src.services.prediction_service - [32mINFO[0m -  Loaded supplier model (RandomForestClassifier)
+2025-12-07 00:23:24,899 - src.services.prediction_service - [32mINFO[0m -  Loaded inventory model (ARIMA)
+2025-12-07 00:23:24,899 - src.services.prediction_service - [32mINFO[0m -  Loaded shipment model (LogisticRegression)
+2025-12-07 00:23:24,899 - src.services.prediction_service - [32mINFO[0m - Loaded 3 models successfully
+2025-12-07 00:23:24,899 - app - [32mINFO[0m - Prediction service initialized
+2025-12-07 00:23:24,899 - app - [32mINFO[0m - CSV Database ready
+2025-12-07 00:23:24,899 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:23:24,899 - app - [32mINFO[0m - API READY
+2025-12-07 00:23:24,899 - app - [32mINFO[0m - Environment: development
+2025-12-07 00:23:24,899 - app - [32mINFO[0m - Version: 2.0.0
+2025-12-07 00:23:24,899 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:23:37,014 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:23:40,116 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=305.67, Total Cost=$4,247.37
+2025-12-07 00:23:43,733 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 0.00%)
+2025-12-07 00:23:47,120 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 12.85 km
+2025-12-07 00:23:47,131 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-07 00:23:55,734 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-07 00:23:55,766 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 00:23:55,785 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:23:55,799 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:23:55,799 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:23:55,799 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 4 items in 0.06s (62.2 items/s)
+2025-12-07 00:28:01,878 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:28:07,495 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:28:14,118 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Unreliable (confidence: 63.00%)
+2025-12-07 00:28:21,784 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Unreliable (confidence: 63.00%)
+2025-12-07 00:28:25,494 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Unreliable (confidence: 63.00%)
+2025-12-07 00:28:30,457 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:29:17,914 - app - [32mINFO[0m - API shutting down...
+2025-12-07 00:30:26,198 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:30:26,198 - app - [32mINFO[0m - SUPPLY CHAIN OPTIMIZATION API STARTING
+2025-12-07 00:30:26,198 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:30:26,198 - src.services.prediction_service - [32mINFO[0m - Loading all ML models...
+2025-12-07 00:30:26,575 - src.services.prediction_service - [32mINFO[0m -  Loaded supplier model (RandomForestClassifier)
+2025-12-07 00:30:26,788 - src.services.prediction_service - [32mINFO[0m -  Loaded inventory model (ARIMA)
+2025-12-07 00:30:26,788 - src.services.prediction_service - [32mINFO[0m -  Loaded shipment model (LogisticRegression)
+2025-12-07 00:30:26,788 - src.services.prediction_service - [32mINFO[0m - Loaded 3 models successfully
+2025-12-07 00:30:26,788 - app - [32mINFO[0m - Prediction service initialized
+2025-12-07 00:30:26,788 - app - [32mINFO[0m - CSV Database ready
+2025-12-07 00:30:26,788 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:30:26,788 - app - [32mINFO[0m - API READY
+2025-12-07 00:30:26,788 - app - [32mINFO[0m - Environment: development
+2025-12-07 00:30:26,788 - app - [32mINFO[0m - Version: 2.0.0
+2025-12-07 00:30:26,788 - app - [32mINFO[0m - ============================================================
+2025-12-07 00:30:26,788 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=305.67, Total Cost=$4,247.37
+2025-12-07 00:30:26,808 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:30:26,825 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=305.67, Total Cost=$4,247.37
+2025-12-07 00:32:57,259 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:34:33,210 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:34:40,113 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:34:46,814 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:34:50,099 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:34:52,851 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:34:55,386 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:34:57,765 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:01,621 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:04,048 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:06,815 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:09,841 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:12,666 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 00:35:17,601 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:20,249 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:22,322 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:25,633 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Unreliable (confidence: 63.00%)
+2025-12-07 00:35:28,086 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:35:33,584 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Unreliable (confidence: 63.00%)
+2025-12-07 00:35:38,391 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Unreliable (confidence: 63.00%)
+2025-12-07 00:36:01,266 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=305.67, Total Cost=$4,247.37
+2025-12-07 00:36:36,770 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=2469.66, Total Cost=$17,772.25
+2025-12-07 00:36:44,169 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=281.78, Total Cost=$4,611.73
+2025-12-07 00:36:47,698 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=113.49, Total Cost=$4,073.63
+2025-12-07 00:36:52,287 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=666.59, Total Cost=$5,475.67
+2025-12-07 00:37:12,990 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=1537.4, Total Cost=$6,808.65
+2025-12-07 00:37:17,860 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=17.89, ROP=524.71, Total Cost=$3,384.92
+2025-12-07 00:37:24,672 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=5.66, ROP=523.8, Total Cost=$3,308.47
+2025-12-07 00:37:30,121 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=13.86, ROP=524.31, Total Cost=$3,359.72
+2025-12-07 00:37:35,672 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=16.0, ROP=524.51, Total Cost=$3,373.12
+2025-12-07 00:37:39,907 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=16.0, ROP=524.51, Total Cost=$3,373.12
+2025-12-07 00:37:41,488 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=16.0, ROP=524.51, Total Cost=$3,373.12
+2025-12-07 00:37:55,933 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 0.00%)
+2025-12-07 00:38:11,834 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: Delayed (risk: High, prob: 100.00%)
+2025-12-07 00:38:20,224 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: Delayed (risk: High, prob: 100.00%)
+2025-12-07 00:38:24,392 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 0.00%)
+2025-12-07 00:38:40,193 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 3.15%)
+2025-12-07 00:38:47,391 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: Delayed (risk: High, prob: 99.95%)
+2025-12-07 00:39:03,028 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 0.00%)
+2025-12-07 00:39:16,443 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 12.85 km
+2025-12-07 00:39:16,443 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-07 00:40:15,396 - src.optimization.vehicle_routing - [32mINFO[0m - Nearest Neighbor: Generated 1 routes
+2025-12-07 00:40:15,396 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-07 00:40:48,047 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-07 00:40:48,117 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:40:48,117 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:40:48,117 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:40:48,117 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 00:40:48,127 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:40:48,127 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 5 items in 0.08s (62.8 items/s)
+2025-12-07 00:41:06,813 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-07 00:41:06,862 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:41:06,863 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:41:06,863 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:41:06,880 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 00:41:06,882 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:41:06,883 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 5 items in 0.07s (71.9 items/s)
+2025-12-07 00:54:19,521 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-07 00:54:19,801 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:54:19,801 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 00:54:19,801 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 00:54:19,801 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 00:54:19,801 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 4 items in 0.26s (15.1 items/s)
+2025-12-07 20:01:49,569 - app - [32mINFO[0m - ============================================================
+2025-12-07 20:01:49,569 - app - [32mINFO[0m - SUPPLY CHAIN OPTIMIZATION API STARTING
+2025-12-07 20:01:49,569 - app - [32mINFO[0m - ============================================================
+2025-12-07 20:01:49,569 - src.services.prediction_service - [32mINFO[0m - Loading all ML models...
+2025-12-07 20:01:53,761 - src.services.prediction_service - [32mINFO[0m -  Loaded supplier model (RandomForestClassifier)
+2025-12-07 20:01:56,175 - src.services.prediction_service - [32mINFO[0m -  Loaded inventory model (ARIMA)
+2025-12-07 20:01:56,215 - src.services.prediction_service - [32mINFO[0m -  Loaded shipment model (LogisticRegression)
+2025-12-07 20:01:56,215 - src.services.prediction_service - [32mINFO[0m - Loaded 3 models successfully
+2025-12-07 20:01:56,215 - app - [32mINFO[0m - Prediction service initialized
+2025-12-07 20:01:56,215 - app - [32mINFO[0m - CSV Database ready
+2025-12-07 20:01:56,215 - app - [32mINFO[0m - ============================================================
+2025-12-07 20:01:56,215 - app - [32mINFO[0m - API READY
+2025-12-07 20:01:56,222 - app - [32mINFO[0m - Environment: development
+2025-12-07 20:01:56,222 - app - [32mINFO[0m - Version: 2.0.0
+2025-12-07 20:01:56,222 - app - [32mINFO[0m - ============================================================
+2025-12-07 20:07:22,673 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 20:08:00,786 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Unreliable (confidence: 63.00%)
+2025-12-07 20:08:14,720 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=305.67, Total Cost=$4,247.37
+2025-12-07 20:08:30,788 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 0.00%)
+2025-12-07 20:08:53,868 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 12.85 km
+2025-12-07 20:08:53,868 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-07 20:09:48,500 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-07 20:09:48,573 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 20:09:48,582 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 20:09:48,595 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 20:09:48,595 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 20:09:48,595 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 4 items in 0.09s (46.3 items/s)
+2025-12-07 23:05:09,388 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 12.85 km
+2025-12-07 23:05:09,398 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-07 23:05:13,555 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-07 23:05:14,026 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 23:05:14,026 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 23:05:14,026 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 23:05:14,026 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 23:05:14,039 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 4 items in 0.48s (8.4 items/s)
+2025-12-07 23:16:19,353 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 23:16:21,637 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=305.67, Total Cost=$4,247.37
+2025-12-07 23:16:23,930 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 0.00%)
+2025-12-07 23:16:26,953 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 12.85 km
+2025-12-07 23:16:26,953 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-07 23:16:34,969 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-07 23:16:35,171 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-07 23:16:35,185 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 23:16:35,185 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-07 23:16:35,206 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-07 23:16:35,207 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 4 items in 0.24s (16.9 items/s)
+2025-12-07 23:44:56,586 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 12.85 km
+2025-12-07 23:44:56,593 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-07 23:51:11,510 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 17339.44 km
+2025-12-07 23:51:11,526 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 17339.44 km total
+2025-12-08 00:07:23,315 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-08 00:30:08,394 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-08 00:30:10,616 - src.optimization.inventory_optimizer - [32mINFO[0m - Inventory policy optimized: EOQ=565.69, ROP=305.67, Total Cost=$4,247.37
+2025-12-08 00:30:12,861 - src.services.prediction_service - [32mINFO[0m - Shipment prediction: On Time (risk: Low, prob: 0.00%)
+2025-12-08 00:30:15,987 - src.optimization.vehicle_routing - [32mINFO[0m - Clarke-Wright: Generated 1 routes, Total distance: 12.85 km
+2025-12-08 00:30:15,987 - src.optimization.vehicle_routing - [32mINFO[0m - Route optimization complete: 1 routes, 12.85 km total
+2025-12-08 00:30:23,690 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel optimizer initialized: 4 workers (threads)
+2025-12-08 00:30:24,028 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 100.00%)
+2025-12-08 00:30:24,058 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-08 00:30:24,059 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 65.00%)
+2025-12-08 00:30:24,062 - src.services.prediction_service - [32mINFO[0m - Supplier prediction: Reliable (confidence: 95.00%)
+2025-12-08 00:30:24,062 - src.optimization.parallel_optimizer - [32mINFO[0m - Parallel map completed: 4 items in 0.37s (10.8 items/s)
