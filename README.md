@@ -48,6 +48,7 @@ This project presents a comprehensive supply chain management system designed to
 - **🗺️ Route Optimization** - Advanced VRP algorithms with interactive map visualization
 
 ---
+https://github.com/SyuzannE/Supply-Chain-Management-project/blob/main/Screenshot%202025-12-07%20200828.png
 
 ## ✨ Features
 
