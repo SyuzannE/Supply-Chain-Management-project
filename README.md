@@ -33,7 +33,7 @@ An intelligent, modern dashboard designed to optimize supply chain operations th
 ---
 
 ## 🌟 Overview
-![Uploading Screenshot 2025-12-08 000627.png…]()
+
 
 
 This project presents a comprehensive supply chain management system designed to optimize logistics operations, inventory tracking, and supply chain visibility. The system addresses critical challenges in modern supply chain operations including real-time tracking, inventory optimization, and data-driven decision making.
