@@ -49,8 +49,9 @@ This project presents a comprehensive supply chain management system designed to
 
 ---
 
-![Dashboard](https://github.com/SyuzannE/Supply-Chain-Management-project/blob/main/Screenshot%202025-12-07%20200828.png)
 
+![Dashboard](https://github.com/SyuzannE/Supply-Chain-Management-project/blob/main/Screenshot%202025-12-08%20000627.png)
+![statistics](https://github.com/SyuzannE/Supply-Chain-Management-project/blob/main/Screenshot%202025-12-07%20200828.png)
 ## ✨ Features
 
 ### Machine Learning & Predictions
