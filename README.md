@@ -1,4 +1,4 @@
-# **Supply Chain Optimization App**
+# ** 🔗Supply Chain Optimization App**
 
 In the digital age, where supply chains are the backbone of global commerce, the ability to **predict, optimize, and react** in real time has become a competitive superpower. This project is a modern, AI-powered command center designed to tackle the complex challenges of supply chain management with intelligence and style.
 
@@ -6,7 +6,7 @@ With an interactive interface built using **React, TypeScript, and Tailwind CSS*
 
 An intelligent, modern dashboard designed to optimize supply chain operations through smart routing, demand forecasting, real-time monitoring, and data-driven decision making.
 
-# 🔗 Supply Chain Optimization System
+
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
@@ -33,6 +33,8 @@ An intelligent, modern dashboard designed to optimize supply chain operations th
 ---
 
 ## 🌟 Overview
+![Uploading Screenshot 2025-12-08 000627.png…]()
+
 
 This project presents a comprehensive supply chain management system designed to optimize logistics operations, inventory tracking, and supply chain visibility. The system addresses critical challenges in modern supply chain operations including real-time tracking, inventory optimization, and data-driven decision making.
 
